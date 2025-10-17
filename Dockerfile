@@ -31,6 +31,6 @@ COPY . .
 
 WORKDIR $APP_SOURCES
 
-RUN sed -i 's/\r$//g' $APP_HOME/entrypoint.sh
+RUN sed -i 's/\r$//g' $APP_SOURCES/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]

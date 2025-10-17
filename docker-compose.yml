@@ -4,7 +4,7 @@ services:
   app:
     build: .
     restart: unless-stopped
-    command: gunicorn --bind 0.0.0.0:8080 --workers 4 --log-level info --chdir /app/comments_classifier classifier.wsgi:application
+    command: gunicorn --bind 0.0.0.0:8080 --workers 4 --log-level info classifier.wsgi:application
     expose:
       - "8080"
     volumes:

@@ -28,5 +28,5 @@ RUN poetry install --no-root
 COPY . .
 
 RUN sed -i 's/\r$//g' $APP_SOURCES/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-ENTRYPOINT ["/app/entrypoint.sh"]
+RUN chmod +x $APP_SOURCES/entrypoint.sh
+ENTRYPOINT ["$APP_SOURCES/entrypoint.sh"]

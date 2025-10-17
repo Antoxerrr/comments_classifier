@@ -4,6 +4,10 @@ import os
 import sys
 
 
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.dirname(CURRENT_DIR))
+
+
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'classifier.settings')

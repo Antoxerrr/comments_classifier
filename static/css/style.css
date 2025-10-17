@@ -1,0 +1,23 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --max-w: 900px;
+}
+
+body nav {
+    max-width: var(--max-w);
+    margin: 0 auto;
+}
+
+main {
+    max-width: var(--max-w);
+    margin: 0 auto;
+}
+
+.comment-container {
+    max-width: 650px;
+    margin: 75px auto;
+}

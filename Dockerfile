@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED=1
 
 ENV APP_SOURCES=/app/comments_classifier
 RUN mkdir -p $APP_SOURCES
-RUN workdir $APP_SOURCES
+WORKDIR $APP_SOURCES
 
 RUN apt-get update && apt-get install -y \
     build-essential \

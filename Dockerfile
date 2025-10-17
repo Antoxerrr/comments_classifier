@@ -1,5 +1,12 @@
 FROM python:3.12.9-slim
 
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+ENV APP_HOME=/app
+ENV APP_SOURCES=/app/comments_classifier
+RUN mkdir $APP_HOME
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
@@ -12,16 +19,18 @@ ENV PATH="${POETRY_HOME}/bin:${PATH}"
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
-WORKDIR /app
+WORKDIR $APP_HOME
 
 COPY pyproject.toml poetry.lock* ./
 
-RUN poetry install --no-dev --no-interaction --no-ansi
+RUN pip install gunicorn
+
+RUN poetry install --no-root
 
 COPY . .
 
-RUN python manage.py collectstatic --noinput
+WORKDIR $APP_SOURCES
 
-EXPOSE 8000
-
-CMD ["gunicorn", "classifier.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+RUN sed -i 's/\r$//g' $APP_HOME/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]

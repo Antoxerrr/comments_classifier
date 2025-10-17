@@ -4,7 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 ENV APP_SOURCES=/app/comments_classifier
-RUN mkdir $APP_SOURCES
+RUN mkdir -p $APP_SOURCES
 RUN workdir $APP_SOURCES
 
 RUN apt-get update && apt-get install -y \

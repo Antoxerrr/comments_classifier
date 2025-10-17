@@ -29,4 +29,4 @@ COPY . .
 
 RUN sed -i 's/\r$//g' $APP_SOURCES/entrypoint.sh
 RUN chmod +x $APP_SOURCES/entrypoint.sh
-ENTRYPOINT ["$APP_SOURCES/entrypoint.sh"]
+ENTRYPOINT ["/app/comments_classifier/entrypoint.sh"]

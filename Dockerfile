@@ -26,7 +26,7 @@ RUN pip install gunicorn
 RUN poetry install --no-root
 
 RUN pip uninstall -y polars
-RUN pip install -y polars-lts-cpu
+RUN pip install polars-lts-cpu
 
 COPY . .
 

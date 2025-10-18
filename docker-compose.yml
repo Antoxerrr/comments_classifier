@@ -8,7 +8,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - static_volume:/app/staticfiles
+      - static_volume:/app/comments_classifier/staticfiles
   nginx:
     image: nginx:1.15-alpine
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
       - "${VIRTUAL_PORT}"
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - static_volume:/app/staticfiles
+      - static_volume:/app/comments_classifier/staticfiles
     depends_on:
       - app
     networks:

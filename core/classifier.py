@@ -4,14 +4,10 @@ import joblib
 import numpy as np
 import polars as pl
 from django.conf import settings
-from lightgbm import LGBMClassifier
-from sklearn.ensemble import RandomForestClassifier, VotingClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
-from sklearn.svm import LinearSVC, SVC
-from xgboost import XGBClassifier
 
 from core.models import CommentData
 

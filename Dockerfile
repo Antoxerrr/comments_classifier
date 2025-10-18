@@ -25,6 +25,9 @@ RUN pip install gunicorn
 
 RUN poetry install --no-root
 
+RUN pip uninstall polars
+RUN pip install polars-lts-cpu
+
 COPY . .
 
 RUN sed -i 's/\r$//g' $APP_SOURCES/entrypoint.sh
